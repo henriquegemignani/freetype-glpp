@@ -1,55 +1,12 @@
-/* ============================================================================
- * Freetype GL - A C OpenGL Freetype engine
- * Platform:    Any
- * WWW:         http://code.google.com/p/freetype-gl/
- * ----------------------------------------------------------------------------
- * Copyright 2011,2012 Nicolas P. Rougier. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *  1. Redistributions of source code must retain the above copyright notice,
- *     this list of conditions and the following disclaimer.
- *
- *  2. Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY NICOLAS P. ROUGIER ''AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
- * EVENT SHALL NICOLAS P. ROUGIER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * The views and conclusions contained in the software and documentation are
- * those of the authors and should not be interpreted as representing official
- * policies, either expressed or implied, of Nicolas P. Rougier.
- * ============================================================================
- *
- * This source is based on the article by Jukka Jylänki :
- * "A Thousand Ways to Pack the Bin - A Practical Approach to
- * Two-Dimensional Rectangle Bin Packing", February 27, 2010.
- *
- * More precisely, this is an implementation of the Skyline Bottom-Left
- * algorithm based on C++ sources provided by Jukka Jylänki at:
- * http://clb.demon.fi/files/RectangleBinPack/
- *
- *  ============================================================================
- */
+// TODO: license text
 #ifndef FREETYPEGLXX_TEXTURE_ATLAS_H_
 #define FREETYPEGLXX_TEXTURE_ATLAS_H_
 
-#include "texture-atlas.h"
-#include <cstring>
+#include "vec234.hpp"
 
 namespace freetypeglxx {
 
-/**
+/** TODO, fix names?
  * @file   texture-atlas.h
  * @author Nicolas Rougier (Nicolas.Rougier@inria.fr)
  *
@@ -99,20 +56,19 @@ class TextureAtlas {
      */
     TextureAtlas(const size_t width, 
                  const size_t height,
-                 const size_t depth)
-      :  self_(texture_atlas_new(width, height, depth)) {}
+                 const size_t depth);
       
     /**
      *  Deletes a texture atlas.
      *
      */
-    ~TextureAtlas() { texture_atlas_delete(self_); }
+    ~TextureAtlas();
     
     /**
      *  Upload atlas to video memory.
      *
      */
-    void Upload() { texture_atlas_upload(self_); }
+    void Upload();
     
     /**
      *  Allocate a new region in the atlas.
@@ -123,13 +79,7 @@ class TextureAtlas {
      *
      */
     ivec4 GetRegion(const size_t width,
-                    const size_t height) {
-        ivec4 return_value;
-        memcpy(return_value.data,
-               texture_atlas_get_region(self_, width, height).data,
-               sizeof(return_value.data));
-        return return_value;
-    }
+                    const size_t height);
     
     /**
      *  Upload data to the specified atlas region.
@@ -147,21 +97,17 @@ class TextureAtlas {
                    const size_t width,
                    const size_t height,
                    const unsigned char *data,
-                   const size_t stride ) {
-        texture_atlas_set_region(self_, x, y, width, height, data, stride);
-    }
+                   const size_t stride );
     
     /**
      *  Remove all allocated regions from the atlas.
      *
      *  @param self   a texture atlas structure
      */
-    void Clear() {
-        texture_atlas_clear(self_);
-    }
+    void Clear();
     
   private:
-    texture_atlas_t* self_;
+    void* self_;
 };
 
 /** @} */

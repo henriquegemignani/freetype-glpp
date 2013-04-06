@@ -30,8 +30,8 @@ include_directories(freetype-gl)
 
 SET( FREETYPE_GLXX_SRC #src/freetype-gl++.hpp
                        src/vec234.hpp
-                       src/texture-atlas.hpp
-                       src/dummy.cc)
+                       src/texture-atlas.hpp  src/texture-atlas.cpp
+                       src/dummy.cpp)
 
 add_library( freetype-gl++ STATIC ${FREETYPE_GLXX_SRC} )
 
