@@ -32,7 +32,7 @@ add_subdirectory(externals/freetype-gl)
 include_directories(externals/freetype-gl)
 include_directories(include)
 
-SET( FREETYPE_GLXX_SRC #src/freetype-gl++.hpp
+SET( FREETYPE_GLXX_SRC include/freetype-gl++/freetype-gl++.hpp
                        include/freetype-gl++/vec234.hpp
                        include/freetype-gl++/texture-atlas.hpp src/texture-atlas.cpp
                        include/freetype-gl++/shader.hpp        src/shader.cpp
