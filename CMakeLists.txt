@@ -4,6 +4,7 @@ project(freetype-gl++ CXX)
 
 option(FREETYPE-GLXX_EMBEDDED_FREETYPE "Use internal freetype instead of system provided." ON)
 option(FREETYPE-GLXX_EMBEDDED_GLEW     "Use internal glew instead of system provided." ON)
+option(FREETYPE-GLXX_BUILD_DEMOS       "Build the library demos." OFF)
 
 find_package(Freetype QUIET)
 if(FREETYPE-GLXX_EMBEDDED_FREETYPE OR (NOT FREETYPE_FOUND))
@@ -39,3 +40,7 @@ add_library( freetype-gl++ STATIC ${FREETYPE_GLXX_SRC} )
 
 target_link_libraries( freetype-gl++ LINK_PUBLIC
                        freetype-gl )
+                       
+if(FREETYPE-GLXX_BUILD_DEMOS)
+    add_subdirectory(demos)
+endif(FREETYPE-GLXX_BUILD_DEMOS)

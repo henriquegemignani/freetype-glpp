@@ -42,8 +42,6 @@
 #include "vertex-buffer.h"
 #if defined(__APPLE__)
     #include <Glut/glut.h>
-#elif defined(_WIN32) || defined(_WIN64)
-    #include <GLUT/glut.h>
 #else
     #include <GL/glut.h>
 #endif

@@ -15,3 +15,8 @@ CMakeCache.txt
 Win32/
 x64/
 *.dir/
+
+/config.h
+/freeglut.pc
+/freeglut.rc
+/freeglutdll.def
