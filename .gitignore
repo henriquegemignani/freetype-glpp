@@ -4,3 +4,13 @@ CMakeCache.txt
 *.sln
 *.vcxproj
 *.filters
+*.a
+*.so
+*.dylib
+*.lib
+*.pdb
+*.sdf
+*.opensdf
+Win32/
+x64/
+*.dir/

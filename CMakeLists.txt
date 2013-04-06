@@ -2,7 +2,35 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.8.5 )
 
 project(freetype-gl++ CXX)
 
+option(FREETYPE-GLXX_EMBEDDED_FREETYPE "Use internal freetype instead of system provided." ON)
+option(FREETYPE-GLXX_EMBEDDED_GLEW     "Use internal glew instead of system provided." ON)
+
+find_package(Freetype QUIET)
+if(FREETYPE-GLXX_EMBEDDED_FREETYPE OR (NOT FREETYPE_FOUND))
+	message("-- Using internal freetype.")
+	set(FREETYPE-GLXX_EMBEDDED_FREETYPE ON)
+	add_subdirectory(externals/freetype)
+    set(FREETYPE_INCLUDE_DIRS ${FREETYPE_INCLUDE_DIR})
+    set(FREETYPE_LIBRARIES    ${FREETYPE_LIBRARY})
+endif()
+include_directories(${FREETYPE_INCLUDE_DIRS})
+
+find_package(GLEW 1.5 QUIET)
+if(FREETYPE-GLXX_EMBEDDED_GLEW OR (NOT GLEW_FOUND))
+    message("-- Using internal GLEW.")
+	set(FREETYPE-GLXX_EMBEDDED_GLEW ON)
+	add_subdirectory(externals/glew)
+	set(GLEW_INCLUDE_DIRS ${GLEW_INCLUDE_DIR})
+	set(GLEW_LIBRARIES ${GLEW_LIBRARY})
+endif()
+include_directories(${GLEW_INCLUDE_DIRS})
+
+add_subdirectory(freetype-gl)
+
 SET( FREETYPE_GLXX_SRC #src/freetype-gl++.hpp
                        src/dummy.cc)
 
 add_library( freetype-gl++ STATIC ${FREETYPE_GLXX_SRC} )
+
+target_link_libraries( freetype-gl++ LINK_PUBLIC
+                       freetype-gl )

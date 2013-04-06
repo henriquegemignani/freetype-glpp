@@ -59,3 +59,7 @@ SET( FREETYPE_GL_SRC freetype-gl.h
 
 #ADD_LIBRARY( ${FREETYPE_GL_LIBRARY} STATIC ${FREETYPE_GL_SRC} )
 ADD_LIBRARY( freetype-gl STATIC ${FREETYPE_GL_SRC} )
+target_link_libraries( freetype-gl LINK_PUBLIC
+                       ${OPENGL_LIBRARIES}
+                       ${FREETYPE_LIBRARIES}
+                       ${GLEW_LIBRARIES})
