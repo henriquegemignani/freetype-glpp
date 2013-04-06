@@ -28,6 +28,7 @@ include_directories(${GLEW_INCLUDE_DIRS})
 add_subdirectory(freetype-gl)
 
 SET( FREETYPE_GLXX_SRC #src/freetype-gl++.hpp
+                       src/texture-atlas.hpp
                        src/dummy.cc)
 
 add_library( freetype-gl++ STATIC ${FREETYPE_GLXX_SRC} )
