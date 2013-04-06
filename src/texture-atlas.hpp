@@ -45,8 +45,9 @@
 #define FREETYPEGLXX_TEXTURE_ATLAS_H_
 
 #include "texture-atlas.h"
+#include <cstring>
 
-namespace freetype-glxx {
+namespace freetypeglxx {
 
 /**
  * @file   texture-atlas.h
@@ -123,7 +124,11 @@ class TextureAtlas {
      */
     ivec4 GetRegion(const size_t width,
                     const size_t height) {
-        return texture_atlas_get_region(self_, width, height);
+        ivec4 return_value;
+        memcpy(return_value.data,
+               texture_atlas_get_region(self_, width, height).data,
+               sizeof(return_value.data));
+        return return_value;
     }
     
     /**
@@ -157,10 +162,10 @@ class TextureAtlas {
     
   private:
     texture_atlas_t* self_;
-}
+};
 
 /** @} */
 
-} // namespace freetype-glxx
+} // namespace freetypeglxx
 
 #endif // FREETYPEGLXX_TEXTURE_ATLAS_H_

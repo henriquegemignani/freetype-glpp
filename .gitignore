@@ -11,6 +11,7 @@ CMakeCache.txt
 *.pdb
 *.sdf
 *.opensdf
+*.suo
 Win32/
 x64/
 *.dir/

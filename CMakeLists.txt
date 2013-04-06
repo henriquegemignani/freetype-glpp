@@ -26,8 +26,10 @@ endif()
 include_directories(${GLEW_INCLUDE_DIRS})
 
 add_subdirectory(freetype-gl)
+include_directories(freetype-gl)
 
 SET( FREETYPE_GLXX_SRC #src/freetype-gl++.hpp
+                       src/vec234.hpp
                        src/texture-atlas.hpp
                        src/dummy.cc)
 
