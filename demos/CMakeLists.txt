@@ -42,16 +42,11 @@ DEMO( demo-font             "src/demo-font.cpp" )
 #DEMO( demo-distance-field-3 "demo-distance-field-3.c;edtaa3func.c")
 
 # Copy font and shaders into build directory for in-place testing
-#FILE(GLOB Fonts   "fonts/Vera.ttf"
-#                  "fonts/VeraMoBI.ttf"
-#                  "fonts/VeraMoBd.ttf"
-#                  "fonts/VeraMoIt.ttf"
-#                  "fonts/VeraMono.ttf"
-#                  "fonts/ObelixPro.ttf")
-#file(COPY ${Fonts}   DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/fonts)
-#
-#FILE(GLOB Data   "data/256colors.txt")
-#file(COPY ${Data}   DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data)
-#
-#FILE(GLOB Shaders "shaders/*.vert" "shaders/*.frag")
-#file(COPY ${Shaders} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/shaders)
+FILE(GLOB Fonts   "files/fonts/*.ttf")
+file(COPY ${Fonts}   DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/fonts)
+
+FILE(GLOB Data    "files/data/256colors.txt")
+file(COPY ${Data}   DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data)
+
+FILE(GLOB Shaders "files/shaders/*.vert" "files/shaders/*.frag")
+file(COPY ${Shaders} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/shaders)

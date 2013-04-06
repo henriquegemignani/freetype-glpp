@@ -38,7 +38,7 @@
 
 #include "freetype-gl.h"
 #include "mat4.h"
-#include "shader.h"
+#include <freetype-gl++/shader.hpp>
 #include "vertex-buffer.h"
 #if defined(__APPLE__)
     #include <Glut/glut.h>
@@ -180,8 +180,8 @@ int main( int argc, char **argv )
     }
     glBindTexture( GL_TEXTURE_2D, atlas->id );
 
-    shader = shader_load("shaders/v3f-t2f-c4f.vert",
-                         "shaders/v3f-t2f-c4f.frag");
+    shader = freetypeglxx::shader::Load("shaders/v3f-t2f-c4f.vert",
+                                        "shaders/v3f-t2f-c4f.frag");
     mat4_set_identity( &projection );
     mat4_set_identity( &model );
     mat4_set_identity( &view );

@@ -4,8 +4,7 @@
 #include "shader.h"
 
 namespace freetypeglxx {
-namespace glutility {
-
+namespace shader {
 
 char * Read( const char *filename ) {
     return shader_read(filename);
@@ -21,12 +20,13 @@ GLuint Load( const char * vert_filename,
     return shader_load(vert_filename, frag_filename);
 }
 
-GLuint Get( GLuint self,
+// Function doesn't exists in freetype-gl
+/* GLuint Get( GLuint self,
             const char * name ) {
     return shader_get(self, name);
-}
+}*/
 
 /** @} */
 
-} // namespace glutility
+} // namespace shader
 } // namespace freetypeglxx

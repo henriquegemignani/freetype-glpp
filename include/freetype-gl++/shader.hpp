@@ -5,7 +5,7 @@
 #include <freetype-gl++/opengl.hpp>
 
 namespace freetypeglxx {
-namespace glutility {
+namespace shader {
 
 /**
  * @file   shader.h
@@ -75,7 +75,7 @@ namespace glutility {
 
 /** @} */
 
-} // namespace glutility
+} // namespace shader
 } // namespace freetypeglxx
 
 #endif // FREETYPEGLXX_SHADER_H_
