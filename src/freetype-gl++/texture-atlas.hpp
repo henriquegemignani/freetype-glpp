@@ -2,7 +2,7 @@
 #ifndef FREETYPEGLXX_TEXTURE_ATLAS_H_
 #define FREETYPEGLXX_TEXTURE_ATLAS_H_
 
-#include "vec234.hpp"
+#include <freetype-gl++/vec234.hpp>
 
 namespace freetypeglxx {
 

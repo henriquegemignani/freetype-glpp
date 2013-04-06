@@ -1,5 +1,5 @@
 // TODO: license text
-#include "texture-atlas.hpp"
+#include <freetype-gl++/texture-atlas.hpp>
 #include <cstring>
 
 #include "texture-atlas.h"
