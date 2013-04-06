@@ -72,6 +72,52 @@ class TextureGlyph {
      * @return x kerning value
      */
     float GetKerning(const wchar_t charcode);
+    
+    /// Glyph's width in pixels.
+    size_t width() const;
+
+    /// Glyph's height in pixels.
+    size_t height() const;
+
+    /// Glyph's left bearing expressed in integer pixels.
+    int offset_x() const;
+
+    /**
+     * Glyphs's top bearing expressed in integer pixels.
+     *
+     * Remember that this is the distance from the baseline to the top-most
+     * glyph scanline, upwards y coordinates being positive.
+     */
+    int offset_y() const;
+
+    /**
+     * For horizontal text layouts, this is the horizontal distance (in
+     * fractional pixels) used to increment the pen position when the glyph is
+     * drawn as part of a string of text.
+     */
+    float advance_x() const;
+
+    /**
+     * For vertical text layouts, this is the vertical distance (in fractional
+     * pixels) used to increment the pen position when the glyph is drawn as
+     * part of a string of text.
+     */
+    float advance_y() const;
+
+    /// First normalized texture coordinate (x) of top-left corner
+    float s0() const;
+
+    /// Second normalized texture coordinate (y) of top-left corner
+    float t0() const;
+
+    /// First normalized texture coordinate (x) of bottom-right corner
+    float s1() const;
+
+    /// Second normalized texture coordinate (y) of bottom-right corner
+    float t1() const;
+
+    /// Glyph outline type (0 = None, 1 = line, 2 = inner, 3 = outer)
+    int outline_type() const;
 
   private:
     TextureGlyph(void* data);
@@ -132,6 +178,16 @@ class TextureFont {
      *         every glyphs.
      */
     size_t LoadGlyphs(const wchar_t * charcodes);
+    
+    /// Getters
+    /**
+     * This field is simply used to compute a default line spacing (i.e., the
+     * baseline-to-baseline distance) when writing text with this font. Note
+     * that it usually is larger than the sum of the ascender and descender
+     * taken as absolute values. There is also no guarantee that no glyphs
+     * extend above or below subsequent baselines when using this distance.
+     */
+    float height() const;
     
   private:
     void* self_;

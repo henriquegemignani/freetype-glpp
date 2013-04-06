@@ -42,4 +42,6 @@ void TextureAtlas::Clear() {
     texture_atlas_clear(static_cast<texture_atlas_t*>(self_));
 }
 
+unsigned int TextureAtlas::id() const { return static_cast<texture_atlas_t*>(self_)->id; }
+
 } // namespace freetypeglxx

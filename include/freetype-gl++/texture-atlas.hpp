@@ -107,6 +107,11 @@ class TextureAtlas {
     void Clear();
     
     /**
+     * Texture identity (OpenGL)
+     */
+    unsigned int id() const;
+    
+    /**
      *  Returns the implementation pointer.
      *  For internal library use (or advanced uses).
      *
