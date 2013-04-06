@@ -58,6 +58,7 @@ set(freetype_SOURCES
 	src/base/ftgasp.c
 	src/base/ftglyph.c
 	src/base/ftinit.c
+	src/base/ftlcdfil.c
 	src/base/ftmm.c
 	src/base/ftpfr.c
 	src/base/ftstroke.c
@@ -87,7 +88,6 @@ set(freetype_SOURCES
 )
 
 include_directories(include)
-add_definitions(-DFT2_BUILD_LIBRARY)
 add_library(freetype STATIC ${freetype_SOURCES})
 
 set(FREETYPE_INCLUDE_DIR_ft2build "${freetype_SOURCE_DIR}/include" CACHE PATH "" FORCE)

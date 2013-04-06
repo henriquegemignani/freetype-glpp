@@ -24,7 +24,7 @@ MACRO( DEMO _target _sources)
 ENDMACRO( DEMO )
 
 #DEMO( demo-texture          "demo-texture.c" )
-DEMO( demo-font             "font/demo-font.cpp" )
+DEMO( demo-font             "src/demo-font.cpp" )
 #DEMO( demo-benchmark        "demo-benchmark.c" )
 #DEMO( demo-console          "demo-console.c" )
 #DEMO( demo-cube             "demo-cube.c" )

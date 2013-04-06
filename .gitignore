@@ -12,6 +12,9 @@ CMakeCache.txt
 *.sdf
 *.opensdf
 *.suo
+*.ilk
+*.vcxproj.user
+*.exe
 Win32/
 x64/
 *.dir/
