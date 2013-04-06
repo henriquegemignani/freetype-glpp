@@ -23,6 +23,7 @@ if(FREETYPE-GLXX_EMBEDDED_GLEW OR (NOT GLEW_FOUND))
 	add_subdirectory(externals/glew)
 	set(GLEW_INCLUDE_DIRS ${GLEW_INCLUDE_DIR})
 	set(GLEW_LIBRARIES ${GLEW_LIBRARY})
+    add_definitions(-DGLEW_STATIC)
 endif()
 include_directories(${GLEW_INCLUDE_DIRS})
 

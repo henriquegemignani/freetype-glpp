@@ -12,6 +12,7 @@ if(FREETYPE-GLXX_EMBEDDED_GLUT OR (NOT GLUT_FOUND))
 	add_subdirectory(${CMAKE_SOURCE_DIR}/externals/freeglut freeglut)
     set(GLUT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/externals/freeglut/include")
     set(GLUT_LIBRARIES    freeglut_static)
+    add_definitions(-DFREEGLUT_STATIC)
 endif()
 
 include_directories( ${GLUT_INCLUDE_DIR} )
