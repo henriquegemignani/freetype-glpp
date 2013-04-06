@@ -25,8 +25,8 @@ if(FREETYPE-GLXX_EMBEDDED_GLEW OR (NOT GLEW_FOUND))
 endif()
 include_directories(${GLEW_INCLUDE_DIRS})
 
-add_subdirectory(freetype-gl)
-include_directories(freetype-gl)
+add_subdirectory(externals/freetype-gl)
+include_directories(externals/freetype-gl)
 include_directories(src)
 
 SET( FREETYPE_GLXX_SRC #src/freetype-gl++.hpp
