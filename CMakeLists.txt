@@ -35,6 +35,7 @@ include_directories(include)
 SET( FREETYPE_GLXX_SRC include/freetype-gl++/freetype-gl++.hpp
                        include/freetype-gl++/vec234.hpp
                        include/freetype-gl++/texture-atlas.hpp src/texture-atlas.cpp
+                       include/freetype-gl++/texture-font.hpp  src/texture-font.cpp
                        include/freetype-gl++/shader.hpp        src/shader.cpp
                        src/dummy.cpp)
 

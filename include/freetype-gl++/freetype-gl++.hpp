@@ -6,6 +6,6 @@
 #include <freetype-gl++/vec234.hpp>
 //#include "vector.h"
 #include <freetype-gl++/texture-atlas.hpp>
-//#include "texture-font.h"
+#include <freetype-gl++/texture-font.hpp>
 
 #endif // FREETYPEGLXX_FREETYPEGLXX_HPP_

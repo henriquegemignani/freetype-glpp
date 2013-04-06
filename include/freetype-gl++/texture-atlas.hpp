@@ -1,6 +1,6 @@
 // TODO: license text
-#ifndef FREETYPEGLXX_TEXTURE_ATLAS_H_
-#define FREETYPEGLXX_TEXTURE_ATLAS_H_
+#ifndef FREETYPEGLXX_TEXTUREATLAS_HPP_
+#define FREETYPEGLXX_TEXTUREATLAS_HPP_
 
 #include <freetype-gl++/vec234.hpp>
 
@@ -106,6 +106,14 @@ class TextureAtlas {
      */
     void Clear();
     
+    /**
+     *  Returns the implementation pointer.
+     *  For internal library use (or advanced uses).
+     *
+     * @return A texture_atlas_t pointer as a void*. You must cast it yourself.
+     */
+    void* RawGet() { return self_; }
+    
   private:
     void* self_;
 };
@@ -114,4 +122,4 @@ class TextureAtlas {
 
 } // namespace freetypeglxx
 
-#endif // FREETYPEGLXX_TEXTURE_ATLAS_H_
+#endif // FREETYPEGLXX_TEXTUREATLAS_HPP_
