@@ -168,16 +168,14 @@ int main( int argc, char **argv )
     fprintf( stderr, "Using GLEW %s\n", glewGetString(GLEW_VERSION) );
 
     size_t i;
-    TextureFont *font = NULL;
     TextureAtlas *atlas = new TextureAtlas( 512, 512, 1 );
     const char * filename = "fonts/Vera.ttf";
     wchar_t *text = L"A Quick Brown Fox Jumps Over The Lazy Dog 0123456789";
     buffer = vertex_buffer_new( "vertex:3f,tex_coord:2f,color:4f" );
     vec2 pen = {{5,400}};
     vec4 black = {{0,0,0,1}};
-    for( i=7; i < 27; ++i)
-    {
-        font = new TextureFont( atlas, filename, i );
+    for(size_t i = 7; i < 27; ++i) {
+        TextureFont *font = new TextureFont( atlas, filename, i );
         pen.x = 5;
         pen.y -= font->height();
         font->LoadGlyphs( text );

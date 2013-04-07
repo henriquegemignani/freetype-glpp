@@ -1,4 +1,41 @@
-// TODO: license text
+/* ============================================================================
+ * Freetype GL++ - A C++ FreeType-GL wrapper
+ * Platform:       Any
+ * WWW:            https://github.com/henriquegemignani/freetype-glpp
+ * ----------------------------------------------------------------------------
+ * Copyright 2013 Henrique Gemignani. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *  1. Redistributions of source code must retain the above copyright notice,
+ *     this list of conditions and the following disclaimer.
+ *
+ *  2. Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY HENRIQUE GEMIGNANI ''AS IS'' AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+ * EVENT SHALL HENRIQUE GEMIGNANI OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * The views and conclusions contained in the software and documentation are
+ * those of the authors and should not be interpreted as representing official
+ * policies, either expressed or implied, of Henrique Gemignani.
+ * ============================================================================
+ * 
+ *  This library is merely a wrapper of the Freetype GL by Nicolas P. Rougier.
+ *  WWW: http://code.google.com/p/freetype-gl/
+ * 
+ * ============================================================================
+ */
 #ifndef FREETYPEGLXX_TEXTUREATLAS_HPP_
 #define FREETYPEGLXX_TEXTUREATLAS_HPP_
 
@@ -6,9 +43,8 @@
 
 namespace freetypeglxx {
 
-/** TODO, fix names?
- * @file   texture-atlas.h
- * @author Nicolas Rougier (Nicolas.Rougier@inria.fr)
+/**
+ * @file   texture-atlas.hpp
  *
  * @defgroup texture-atlas Texture atlas
  *
@@ -24,18 +60,18 @@ namespace freetypeglxx {
  *
  * Example Usage:
  * @code
- * #include "texture-atlas.h"
+ * #include <freetype-gl++/texture-atlas.hpp>
  *
  * ...
  *
  * / Creates a new atlas of 512x512 with a depth of 1
- * texture_atlas_t * atlas = texture_atlas_new( 512, 512, 1 );
+ * freetypeglxx::TextureAtlas *atlas = new freetypeglxx::TextureAtlas(512, 512, 1);
  *
  * // Allocates a region of 20x20
- * ivec4 region = texture_atlas_get_region( atlas, 20, 20 );
+ * freetypeglxx::ivec4 region = atlas->GetRegion(20, 20);
  *
  * // Fill region with some data
- * texture_atlas_set_region( atlas, region.x, region.y, region.width, region.height, data, stride )
+ * atlas->SetRegion(region.x, region.y, region.width, region.height, data, stride)
  *
  * ...
  *
