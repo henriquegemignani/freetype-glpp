@@ -39,6 +39,7 @@
 #ifndef FREETYPEGLXX_TEXTUREATLAS_HPP_
 #define FREETYPEGLXX_TEXTUREATLAS_HPP_
 
+#include <cstddef>
 #include <freetype-gl++/vec234.hpp>
 
 namespace freetypeglxx {
@@ -90,9 +91,9 @@ class TextureAtlas {
      * @param   depth   bit depth of the atlas
      *
      */
-    TextureAtlas(const size_t width, 
-                 const size_t height,
-                 const size_t depth);
+    TextureAtlas(const std::size_t width, 
+                 const std::size_t height,
+                 const std::size_t depth);
       
     /**
      *  Deletes a texture atlas.
@@ -114,8 +115,8 @@ class TextureAtlas {
      *  @return       Coordinates of the allocated region
      *
      */
-    ivec4 GetRegion(const size_t width,
-                    const size_t height);
+    ivec4 GetRegion(const std::size_t width,
+                    const std::size_t height);
     
     /**
      *  Upload data to the specified atlas region.
@@ -128,12 +129,12 @@ class TextureAtlas {
      *  @param stride stride of the data
      *
      */
-    void SetRegion(const size_t x,
-                   const size_t y,
-                   const size_t width,
-                   const size_t height,
+    void SetRegion(const std::size_t x,
+                   const std::size_t y,
+                   const std::size_t width,
+                   const std::size_t height,
                    const unsigned char *data,
-                   const size_t stride );
+                   const std::size_t stride );
     
     /**
      *  Remove all allocated regions from the atlas.

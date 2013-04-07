@@ -43,6 +43,8 @@
 
 namespace freetypeglxx {
 
+using std::size_t;
+
 TextureAtlas::TextureAtlas(const size_t width, 
                            const size_t height,
                            const size_t depth)

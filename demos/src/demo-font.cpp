@@ -36,6 +36,9 @@
  * ============================================================================
  */
 
+#include <cstdio>
+#include <cwchar>
+
 #include "mat4.h"
 #include <freetype-gl++/freetype-gl++.hpp>
 #include <freetype-gl++/shader.hpp>
@@ -112,7 +115,7 @@ void keyboard( unsigned char key, int x, int y )
 
 // --------------------------------------------------------------- add_text ---
 void add_text( vertex_buffer_t * buffer, TextureFont* font,
-               wchar_t * text, vec4 * color, vec2 * pen )
+               const wchar_t * text, vec4 * color, vec2 * pen )
 {
     size_t i;
     float r = color->red, g = color->green, b = color->blue, a = color->alpha;
@@ -170,7 +173,7 @@ int main( int argc, char **argv )
     size_t i;
     TextureAtlas *atlas = new TextureAtlas( 512, 512, 1 );
     const char * filename = "fonts/Vera.ttf";
-    wchar_t *text = L"A Quick Brown Fox Jumps Over The Lazy Dog 0123456789";
+    const wchar_t *text = L"A Quick Brown Fox Jumps Over The Lazy Dog 0123456789";
     buffer = vertex_buffer_new( "vertex:3f,tex_coord:2f,color:4f" );
     vec2 pen = {{5,400}};
     vec4 black = {{0,0,0,1}};
