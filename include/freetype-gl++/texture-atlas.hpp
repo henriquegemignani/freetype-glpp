@@ -142,10 +142,17 @@ class TextureAtlas {
      *  @param self   a texture atlas structure
      */
     void Clear();
-    
-    /**
-     * Texture identity (OpenGL)
-     */
+
+    /// Width (in pixels) of the underlying texture
+    std::size_t width() const;
+
+    /// Height (in pixels) of the underlying texture
+    std::size_t height() const;
+
+    /// Depth (in bytes) of the underlying texture
+    std::size_t depth() const;
+
+    /// Texture identity (OpenGL)
     unsigned int id() const;
     
     /**

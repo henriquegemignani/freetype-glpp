@@ -81,6 +81,15 @@ void TextureAtlas::Clear() {
     texture_atlas_clear(static_cast<texture_atlas_t*>(self_));
 }
 
+/// Width (in pixels) of the underlying texture
+size_t TextureAtlas::width() const { return static_cast<texture_atlas_t*>(self_)->width; }
+
+/// Height (in pixels) of the underlying texture
+size_t TextureAtlas::height() const { return static_cast<texture_atlas_t*>(self_)->height; }
+
+/// Depth (in bytes) of the underlying texture
+size_t TextureAtlas::depth() const { return static_cast<texture_atlas_t*>(self_)->depth; }
+
 unsigned int TextureAtlas::id() const { return static_cast<texture_atlas_t*>(self_)->id; }
 
 } // namespace freetypeglxx
