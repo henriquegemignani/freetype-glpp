@@ -1,6 +1,8 @@
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8.5 )
 
-project(freetype-gl++ CXX)
+project(freetype-gl++ CXX C)
+
+SET( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules" ${CMAKE_MODULE_PATH} )
 
 option(FREETYPE-GLXX_EMBEDDED_FREETYPE "Use internal freetype instead of system provided." ON)
 option(FREETYPE-GLXX_EMBEDDED_GLEW     "Use internal glew instead of system provided." ON)

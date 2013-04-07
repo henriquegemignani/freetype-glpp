@@ -1,4 +1,4 @@
-project(freetype)
+project(freetype C)
 
 set(freetype_SOURCES
   #builds/win32/ftdebug.c
