@@ -40,6 +40,7 @@
 #define FREETYPEGLXX_TEXTUREFONT_HPP_
 
 #include <map>
+#include <string>
 #include <freetype-gl++/texture-atlas.hpp>
 
 namespace freetypeglxx {
@@ -180,7 +181,7 @@ class TextureFont {
      *
      */
     TextureFont(TextureAtlas* atlas,
-                const char * filename,
+                const std::string& filename,
                 const float size );
 
     /**

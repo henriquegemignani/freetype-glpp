@@ -79,10 +79,10 @@ TextureGlyph::TextureGlyph(void* data) : self_(data) {
 //=====================================
 
 TextureFont::TextureFont(TextureAtlas* atlas,
-                         const char* filename,
+                         const std::string& filename,
                          const float size )
     : self_(texture_font_new(static_cast<texture_atlas_t*>(atlas->RawGet()),
-                             filename,
+                             filename.c_str(),
                              size)) {}
                              
 TextureFont::~TextureFont() {
