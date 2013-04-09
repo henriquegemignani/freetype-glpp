@@ -58,11 +58,16 @@ using freetypeglxx::VertexBuffer;
 
 
 // ------------------------------------------------------- typedef & struct ---
-typedef struct {
+struct vertex_t {
+    vertex_t(double _x, double _y, double _z, 
+             double _s, double _t, 
+             double _r, double _g, double _b, double _a)
+             : x(_x), y(_y), z(_z), s(_s), t(_t), r(_r), g(_g), b(_b), a(_a) {}
+
     float x, y, z;    // position
     float s, t;       // texture
     float r, g, b, a; // color
-} vertex_t;
+};
 
 
 // ------------------------------------------------------- global variables ---
@@ -120,6 +125,9 @@ void add_text( VertexBuffer *buffer, TextureFont* font,
 {
     size_t i;
     float r = color->red, g = color->green, b = color->blue, a = color->alpha;
+    GLuint indices_raw[6] = {0,1,2, 0,2,3};
+    std::vector<GLuint> indices(6);
+    memcpy(indices.data(), indices_raw, sizeof(indices_raw));
     for( i=0; i<wcslen(text); ++i )
     {
         TextureGlyph* glyph = font->GetGlyph(text[i]);
@@ -135,16 +143,12 @@ void add_text( VertexBuffer *buffer, TextureFont* font,
             int y0  = (int)( pen->y + glyph->offset_y() );
             int x1  = (int)( x0 + glyph->width() );
             int y1  = (int)( y0 - glyph->height() );
-            float s0 = glyph->s0();
-            float t0 = glyph->t0();
-            float s1 = glyph->s1();
-            float t1 = glyph->t1();
-            GLuint indices[6] = {0,1,2, 0,2,3};
-            vertex_t vertices[4] = { { x0,y0,0,  s0,t0,  r,g,b,a },
-                                     { x0,y1,0,  s0,t1,  r,g,b,a },
-                                     { x1,y1,0,  s1,t1,  r,g,b,a },
-                                     { x1,y0,0,  s1,t0,  r,g,b,a } };
-            buffer->PushBack(vertices, 4, indices, 6);
+            std::vector<vertex_t> vertices;
+            vertices.push_back(vertex_t(x0,y0,0,  glyph->s0(),glyph->t0(),  r,g,b,a ));
+            vertices.push_back(vertex_t(x0,y1,0,  glyph->s0(),glyph->t1(),  r,g,b,a ));
+            vertices.push_back(vertex_t(x1,y1,0,  glyph->s1(),glyph->t1(),  r,g,b,a ));
+            vertices.push_back(vertex_t(x1,y0,0,  glyph->s1(),glyph->t0(),  r,g,b,a ));
+            buffer->PushBack(vertices, indices);
             pen->x += glyph->advance_x();
         }
     }
@@ -171,7 +175,6 @@ int main( int argc, char **argv )
     }
     fprintf( stderr, "Using GLEW %s\n", glewGetString(GLEW_VERSION) );
 
-    size_t i;
     TextureAtlas *atlas = new TextureAtlas( 512, 512, 1 );
     const char * filename = "fonts/Vera.ttf";
     const wchar_t *text = L"A Quick Brown Fox Jumps Over The Lazy Dog 0123456789";

@@ -149,7 +149,7 @@ class VertexBuffer {
     template<class T>
     std::size_t PushBack(const std::vector<T>& vertices, 
                          const std::vector<GLuint>& indices) {
-        return PushBack(static_cast<void*>(vertices.data()), vertices.size(), 
+        return PushBack(static_cast<const void*>(vertices.data()), vertices.size(), 
                         indices.data(), indices.size());
     }
 
