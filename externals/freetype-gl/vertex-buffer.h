@@ -247,7 +247,7 @@ typedef struct
   void
   vertex_buffer_insert_indices ( vertex_buffer_t *self,
                                  size_t index,
-                                 GLuint *indices,
+                                 const GLuint *indices,
                                  size_t icount );
 
 
@@ -264,7 +264,7 @@ typedef struct
   void
   vertex_buffer_insert_vertices ( vertex_buffer_t *self,
                                   size_t index,
-                                  void *vertices,
+                                  const void *vertices,
                                   size_t vcount );
 
 /**
@@ -307,8 +307,8 @@ typedef struct
  */
   size_t
   vertex_buffer_push_back( vertex_buffer_t * self,
-                           void * vertices, size_t vcount,  
-                           GLuint * indices, size_t icount );
+                           const void * vertices, size_t vcount,  
+                           const GLuint * indices, size_t icount );
 
 
 /**
@@ -324,8 +324,8 @@ typedef struct
   size_t
   vertex_buffer_insert( vertex_buffer_t * self,
                         size_t index,
-                        void * vertices, size_t vcount,  
-                        GLuint * indices, size_t icount );
+                        const void * vertices, size_t vcount,  
+                        const GLuint * indices, size_t icount );
 
 /**
  * Erase an item from the vertex buffer.

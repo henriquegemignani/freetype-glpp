@@ -42,7 +42,7 @@
 #include "mat4.h"
 #include <freetype-gl++/freetype-gl++.hpp>
 #include <freetype-gl++/shader.hpp>
-#include "vertex-buffer.h"
+#include <freetype-gl++/vertex-buffer.hpp>
 #if defined(__APPLE__)
     #include <Glut/glut.h>
 #else
@@ -54,6 +54,7 @@ using freetypeglxx::vec4;
 using freetypeglxx::TextureFont;
 using freetypeglxx::TextureGlyph;
 using freetypeglxx::TextureAtlas;
+using freetypeglxx::VertexBuffer;
 
 
 // ------------------------------------------------------- typedef & struct ---
@@ -66,7 +67,7 @@ typedef struct {
 
 // ------------------------------------------------------- global variables ---
 GLuint shader;
-vertex_buffer_t *buffer;
+VertexBuffer *buffer;
 mat4   model, view, projection;
 
 
@@ -89,7 +90,7 @@ void display( void )
                             1, 0, view.data);
         glUniformMatrix4fv( glGetUniformLocation( shader, "projection" ),
                             1, 0, projection.data);
-        vertex_buffer_render( buffer, GL_TRIANGLES );
+        buffer->Render( GL_TRIANGLES );
     }
     glutSwapBuffers( );
 }
@@ -114,7 +115,7 @@ void keyboard( unsigned char key, int x, int y )
 
 
 // --------------------------------------------------------------- add_text ---
-void add_text( vertex_buffer_t * buffer, TextureFont* font,
+void add_text( VertexBuffer *buffer, TextureFont* font,
                const wchar_t * text, vec4 * color, vec2 * pen )
 {
     size_t i;
@@ -143,7 +144,7 @@ void add_text( vertex_buffer_t * buffer, TextureFont* font,
                                      { x0,y1,0,  s0,t1,  r,g,b,a },
                                      { x1,y1,0,  s1,t1,  r,g,b,a },
                                      { x1,y0,0,  s1,t0,  r,g,b,a } };
-            vertex_buffer_push_back( buffer, vertices, 4, indices, 6 );
+            buffer->PushBack(vertices, 4, indices, 6);
             pen->x += glyph->advance_x();
         }
     }
@@ -174,7 +175,7 @@ int main( int argc, char **argv )
     TextureAtlas *atlas = new TextureAtlas( 512, 512, 1 );
     const char * filename = "fonts/Vera.ttf";
     const wchar_t *text = L"A Quick Brown Fox Jumps Over The Lazy Dog 0123456789";
-    buffer = vertex_buffer_new( "vertex:3f,tex_coord:2f,color:4f" );
+    buffer = new VertexBuffer( "vertex:3f,tex_coord:2f,color:4f" );
     vec2 pen = {{5,400}};
     vec4 black = {{0,0,0,1}};
     for(size_t i = 7; i < 27; ++i) {

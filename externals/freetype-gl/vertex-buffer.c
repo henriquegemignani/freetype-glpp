@@ -410,7 +410,7 @@ vertex_buffer_render ( vertex_buffer_t *self, GLenum mode )
 // ----------------------------------------------------------------------------
 void
 vertex_buffer_push_back_indices ( vertex_buffer_t * self,
-                                  GLuint * indices,
+                                  const GLuint * indices,
                                   size_t icount )
 {
     assert( self );
@@ -424,7 +424,7 @@ vertex_buffer_push_back_indices ( vertex_buffer_t * self,
 // ----------------------------------------------------------------------------
 void
 vertex_buffer_push_back_vertices ( vertex_buffer_t * self,
-                                   void * vertices,
+                                   const void * vertices,
                                    size_t vcount )
 {
     assert( self );
@@ -525,8 +525,8 @@ vertex_buffer_erase_vertices( vertex_buffer_t *self,
 // ----------------------------------------------------------------------------
 size_t
 vertex_buffer_push_back( vertex_buffer_t * self,
-                         void * vertices, size_t vcount,  
-                         GLuint * indices, size_t icount )
+                         const void * vertices, size_t vcount,  
+                         const GLuint * indices, size_t icount )
 {
     return vertex_buffer_insert( self, vector_size( self->items ),
                                  vertices, vcount, indices, icount );
@@ -535,8 +535,8 @@ vertex_buffer_push_back( vertex_buffer_t * self,
 // ----------------------------------------------------------------------------
 size_t
 vertex_buffer_insert( vertex_buffer_t * self, size_t index,
-                      void * vertices, size_t vcount,  
-                      GLuint * indices, size_t icount )
+                      const void * vertices, size_t vcount,  
+                      const GLuint * indices, size_t icount )
 {
     size_t vstart, istart, i;
     ivec4 item;

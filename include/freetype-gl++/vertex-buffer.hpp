@@ -41,6 +41,7 @@
 
 #include <cstddef>
 #include <string>
+#include <vector>
 #include <freetype-gl++/opengl.hpp>
 
 namespace freetypeglxx {
@@ -136,8 +137,21 @@ class VertexBuffer {
      * @param  icount   number of indices
      * @param  indices  raw indices data
      */
-    std::size_t PushBack(void * vertices, std::size_t vcount,  
-                         GLuint * indices, std::size_t icount);
+    std::size_t PushBack(const void * vertices, std::size_t vcount,  
+                         const GLuint * indices, std::size_t icount);
+
+    /**
+     * Append a new item to the collection.
+     *
+     * @param  vertices raw vertices data
+     * @param  indices  raw indices data
+     */
+    template<class T>
+    std::size_t PushBack(const std::vector<T>& vertices, 
+                         const std::vector<GLuint>& indices) {
+        return PushBack(static_cast<void*>(vertices.data()), vertices.size(), 
+                        indices.data(), indices.size());
+    }
 
     /**
      * Insert a new item into the vertex buffer.
@@ -149,8 +163,8 @@ class VertexBuffer {
      * @param  icount    number of indices
      */
     std::size_t Insert(std::size_t index,
-                       void * vertices, std::size_t vcount,  
-                       GLuint * indices, std::size_t icount);
+                       const void * vertices, std::size_t vcount,  
+                       const GLuint * indices, std::size_t icount);
 
     /**
      * Erase an item from the vertex buffer.

@@ -87,14 +87,14 @@ void VertexBuffer::Clear() {
     vertex_buffer_clear(CASTED_SELF);
 }
 
-std::size_t VertexBuffer::PushBack(void * vertices, std::size_t vcount,  
-                     GLuint * indices, std::size_t icount) {
+std::size_t VertexBuffer::PushBack(const void * vertices, std::size_t vcount,  
+                                   const GLuint * indices, std::size_t icount) {
     return vertex_buffer_push_back(CASTED_SELF, vertices, vcount, indices, icount);
 }
 
 std::size_t VertexBuffer::Insert(std::size_t index,
-                   void * vertices, std::size_t vcount,  
-                   GLuint * indices, std::size_t icount) {
+                                 const void * vertices, std::size_t vcount,  
+                                 const GLuint * indices, std::size_t icount) {
     return vertex_buffer_insert(CASTED_SELF, index, vertices, vcount, indices, icount);
 }
                     
