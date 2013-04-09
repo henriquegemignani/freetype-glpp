@@ -167,6 +167,22 @@ class VertexBuffer {
                        const GLuint * indices, std::size_t icount);
 
     /**
+     * Insert a new item into the vertex buffer.
+     *
+     * @param  index     location before which to insert item
+     * @param  vertices  raw vertices data
+     * @param  indices   raw indices data
+     */
+    template<class T>
+    std::size_t Insert(std::size_t index,
+                       const std::vector<T>& vertices,  
+                       const std::vector<GLuint>& indices) {
+        return Insert(index,
+                      static_cast<const void*>(vertices.data()), vertices.size(),
+                      indices.data(), indices.size());
+    }
+
+    /**
      * Erase an item from the vertex buffer.
      *
      * @param  index    index of the item to be deleted
