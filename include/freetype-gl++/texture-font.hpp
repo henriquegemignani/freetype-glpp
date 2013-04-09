@@ -225,9 +225,13 @@ class TextureFont {
      */
     float height() const;
     
+    //TODO
+    TextureAtlas* atlas() const;
+    
   private:
     void* self_;
     std::map<void*, TextureGlyph*> glyphs_;
+    TextureAtlas* atlas_;
 };
 
 /** @} */

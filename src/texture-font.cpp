@@ -83,7 +83,8 @@ TextureFont::TextureFont(TextureAtlas* atlas,
                          const float size )
     : self_(texture_font_new(static_cast<texture_atlas_t*>(atlas->RawGet()),
                              filename.c_str(),
-                             size)) {}
+                             size)),
+      atlas_(atlas) {}
                              
 TextureFont::~TextureFont() {
     for(std::map<void*, TextureGlyph*>::iterator it = glyphs_.begin(); it != glyphs_.end(); ++it)
@@ -106,5 +107,10 @@ size_t TextureFont::LoadGlyphs(const wchar_t * charcodes) {
 }
 
 float TextureFont::height() const { return static_cast<texture_font_t*>(self_)->height; }
+
+TextureAtlas* TextureFont::atlas() const {
+    assert(atlas_->RawGet() == static_cast<texture_font_t*>(self_)->atlas);
+    return atlas_;
+}
 
 } // namespace freetypeglxx
