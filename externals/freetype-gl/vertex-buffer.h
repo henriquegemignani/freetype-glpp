@@ -213,7 +213,7 @@ typedef struct
  */
   void
   vertex_buffer_push_back_indices ( vertex_buffer_t *self,
-                                    GLuint * indices,
+                                    const GLuint * indices,
                                     size_t icount );
 
 
@@ -230,7 +230,7 @@ typedef struct
  */
   void
   vertex_buffer_push_back_vertices ( vertex_buffer_t *self,
-                                     void * vertices,
+                                     const void * vertices,
                                      size_t vcount );
 
 

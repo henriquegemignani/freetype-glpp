@@ -439,7 +439,7 @@ vertex_buffer_push_back_vertices ( vertex_buffer_t * self,
 void
 vertex_buffer_insert_indices ( vertex_buffer_t *self,
                                size_t index,
-                               GLuint *indices,
+                               const GLuint *indices,
                                size_t count )
 {
     assert( self );
@@ -456,7 +456,7 @@ vertex_buffer_insert_indices ( vertex_buffer_t *self,
 void
 vertex_buffer_insert_vertices( vertex_buffer_t *self,
                                size_t index,
-                               void *vertices,
+                               const void *vertices,
                                size_t vcount )
 {
     size_t i;
