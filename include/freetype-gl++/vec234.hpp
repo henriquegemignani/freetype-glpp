@@ -84,6 +84,8 @@ union tvec4 {
         T istart; /**< Alias for third component  */
         T icount; /**< Alias for fourth component */
     };
+
+    tvec4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
 };
  
 /**
@@ -113,6 +115,8 @@ union tvec3 {
         T green;  /**< Alias for second component */
         T blue;   /**< Alias for third component  */
     };
+
+    tvec3(T x, T y, T z) : x(x), y(y), z(z) {}
 };
 
 /**
@@ -139,6 +143,8 @@ union tvec2
         T start;  /**< Alias for first component  */
         T end;    /**< Alias for second component */
     };
+
+    tvec2(T x, T y) : x(x), y(y) {}
 };
 
 typedef tvec4<int> ivec4;

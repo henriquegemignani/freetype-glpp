@@ -24,3 +24,5 @@ x64/
 /freeglut.rc
 /freeglutdll.def
 /build
+
+/externals/freetype-gl/Debug/*.cache
