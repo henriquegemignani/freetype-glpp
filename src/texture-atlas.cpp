@@ -61,11 +61,8 @@ void TextureAtlas::Upload() {
 
 ivec4 TextureAtlas::GetRegion(const size_t width,
                               const size_t height) {
-    ivec4 return_value;
-    memcpy(return_value.data,
-           texture_atlas_get_region(static_cast<texture_atlas_t*>(self_), width, height).data,
-           sizeof(return_value.data));
-    return return_value;
+    ::ivec4 result = texture_atlas_get_region(static_cast<texture_atlas_t*>(self_), width, height);
+    return ivec4(result.data[0], result.data[1], result.data[2], result.data[3]);
 }
 
 void TextureAtlas::SetRegion(const size_t x,

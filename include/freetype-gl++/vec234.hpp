@@ -85,6 +85,7 @@ union tvec4 {
         T icount; /**< Alias for fourth component */
     };
 
+    tvec4() {}
     tvec4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
 };
  
@@ -116,6 +117,7 @@ union tvec3 {
         T blue;   /**< Alias for third component  */
     };
 
+    tvec3() {}
     tvec3(T x, T y, T z) : x(x), y(y), z(z) {}
 };
 
@@ -144,6 +146,7 @@ union tvec2
         T end;    /**< Alias for second component */
     };
 
+    tvec2() {}
     tvec2(T x, T y) : x(x), y(y) {}
 };
 
