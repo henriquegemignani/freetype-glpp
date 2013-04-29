@@ -16,6 +16,7 @@ Makefile
 *.ilk
 *.vcxproj.user
 *.exe
+*.cache
 Win32/
 x64/
 *.dir/
@@ -25,5 +26,3 @@ x64/
 /freeglut.rc
 /freeglutdll.def
 /build
-
-/externals/freetype-gl/Debug/*.cache
