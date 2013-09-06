@@ -38,9 +38,9 @@
 
 #include <math.h>
 
-double round (float v)
+double round (double v)
 {
-	return floor(v+0.5f);
+	return floor(v+0.5);
 }
 
 // strndup() is not available on Windows
