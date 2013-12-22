@@ -30,16 +30,11 @@
 # those of the authors and should not be interpreted as representing official
 # policies, either expressed or implied, of Nicolas P. Rougier.
 # =========================================================================
-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.5 )
+CMAKE_MINIMUM_REQUIRED( VERSION 2.8.11 )
 
-FIND_PACKAGE( OpenGL REQUIRED )
-FIND_PACKAGE( GLEW REQUIRED )
-FIND_PACKAGE( Freetype REQUIRED )
-
-INCLUDE_DIRECTORIES( ${OPENGL_INCLUDE_DIRS}
-                     ${FREETYPE_INCLUDE_DIRS}
-                     ${GLEW_INCLUDE_DIRS}
-                     ${CMAKE_CURRENT_SOURCE_DIR})
+#FIND_PACKAGE( OpenGL REQUIRED )
+#FIND_PACKAGE( GLEW REQUIRED )
+#FIND_PACKAGE( Freetype REQUIRED )
 
 SET( FREETYPE_GL_LIBRARY freetype-gl )
 SET( FREETYPE_GL_SRC freetype-gl.h
@@ -57,9 +52,8 @@ SET( FREETYPE_GL_SRC freetype-gl.h
                      vector.c           vector.h
                      platform.c         platform.h)
 
-#ADD_LIBRARY( ${FREETYPE_GL_LIBRARY} STATIC ${FREETYPE_GL_SRC} )
-ADD_LIBRARY( freetype-gl STATIC ${FREETYPE_GL_SRC} )
-target_link_libraries( freetype-gl LINK_PUBLIC
-                       ${OPENGL_LIBRARIES}
-                       ${FREETYPE_LIBRARIES}
-                       ${GLEW_LIBRARIES})
+add_library( freetype-gl STATIC ${FREETYPE_GL_SRC} )
+
+target_link_libraries( freetype-gl LINK_PUBLIC freetype glew)
+target_include_directories(freetype-gl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+

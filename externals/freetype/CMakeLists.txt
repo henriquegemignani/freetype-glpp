@@ -87,11 +87,9 @@ set(freetype_SOURCES
 	src/winfonts/winfnt.c
 )
 
-include_directories(include)
 add_library(freetype STATIC ${freetype_SOURCES})
-
-set(FREETYPE_INCLUDE_DIR_ft2build "${freetype_SOURCE_DIR}/include" CACHE PATH "" FORCE)
-set(FREETYPE_INCLUDE_DIR_freetype2 "${freetype_SOURCE_DIR}/include/freetype" CACHE PATH "" FORCE)
-set(FREETYPE_INCLUDE_DIR "${FREETYPE_EXTERNAL_INCLUDE_DIR_ft2build};${FREETYPE_EXTERNAL_INCLUDE_DIR_freetype2}" CACHE PATH "" FORCE)
-set(FREETYPE_LIBRARY freetype CACHE STRING "" FORCE)
-MARK_AS_ADVANCED(FREETYPE_EXTERNAL_LIBRARY FREETYPE_EXTERNAL_INCLUDE_DIR FREETYPE_EXTERNAL_INCLUDE_DIR_freetype2 FREETYPE_EXTERNAL_INCLUDE_DIR_ft2build)
+target_compile_definitions(freetype PRIVATE "-DFT2_BUILD_LIBRARY")
+target_include_directories(freetype PUBLIC
+    "${freetype_SOURCE_DIR}/include"
+    "${freetype_SOURCE_DIR}/include/freetype"
+    )
