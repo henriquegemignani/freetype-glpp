@@ -17,7 +17,7 @@ if(FREETYPE-GLXX_INTERNAL_FREETYPE)
     add_subdirectory(externals/freetype)
 
 else(FREETYPE-GLXX_INTERNAL_FREETYPE)
-    add_library(freetype SHARED IMPORTED GLOBAL)
+    add_library(freetype STATIC IMPORTED GLOBAL)
     set_target_properties(freetype PROPERTIES
         IMPORTED_LOCATION "${FREETYPE_LIBRARIES}"
         INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIRS}")
