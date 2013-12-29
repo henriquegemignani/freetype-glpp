@@ -14,7 +14,7 @@ check_package(FREETYPE Freetype)
 check_package(GLEW GLEW 1.5)
 
 if(FREETYPE-GLXX_INTERNAL_FREETYPE)
-    add_subdirectory(externals/freetype)
+    add_subdirectory(freetype)
 
 else(FREETYPE-GLXX_INTERNAL_FREETYPE)
     add_library(freetype STATIC IMPORTED GLOBAL)
@@ -26,7 +26,7 @@ endif(FREETYPE-GLXX_INTERNAL_FREETYPE)
 
 if(NOT TARGET glew)
     if(FREETYPE-GLXX_INTERNAL_GLEW)
-        add_subdirectory(externals/glew) # Defines 'glew'
+        add_subdirectory(glew) # Defines 'glew'
     else(FREETYPE-GLXX_INTERNAL_GLEW)
         add_library(glew SHARED IMPORTED GLOBAL)
         set_target_properties(glew PROPERTIES
