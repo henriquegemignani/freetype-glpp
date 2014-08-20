@@ -30,10 +30,10 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of Henrique Gemignani.
  * ============================================================================
- * 
+ *
  *  This library is merely a wrapper of the Freetype GL by Nicolas P. Rougier.
  *  WWW: http://code.google.com/p/freetype-gl/
- * 
+ *
  * ============================================================================
  */
 #include <freetype-gl++/texture-font.hpp>
@@ -81,11 +81,11 @@ TextureGlyph::TextureGlyph(void* data) : self_(data) {
 TextureFont::TextureFont(TextureAtlas* atlas,
                          const std::string& filename,
                          const float size )
-    : self_(texture_font_new(static_cast<texture_atlas_t*>(atlas->RawGet()),
-                             filename.c_str(),
-                             size)),
+    : self_(texture_font_new_from_file(static_cast<texture_atlas_t*>(atlas->RawGet()),
+                                       size,
+                                       filename.c_str())),
       atlas_(atlas) {}
-                             
+
 TextureFont::~TextureFont() {
     for(std::map<void*, TextureGlyph*>::iterator it = glyphs_.begin(); it != glyphs_.end(); ++it)
         delete it->second;

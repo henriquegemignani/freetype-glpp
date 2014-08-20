@@ -91,7 +91,7 @@ texture_atlas_delete( texture_atlas_t *self )
     {
         free( self->data );
     }
-    if( !self->id )
+    if( self->id )
     {
         glDeleteTextures( 1, &self->id );
     }
@@ -338,8 +338,8 @@ texture_atlas_upload( texture_atlas_t * self )
     }
     else
     {
-        glTexImage2D( GL_TEXTURE_2D, 0, GL_ALPHA, self->width, self->height,
-                      0, GL_ALPHA, GL_UNSIGNED_BYTE, self->data );
+        glTexImage2D( GL_TEXTURE_2D, 0, GL_RED, self->width, self->height,
+                      0, GL_RED, GL_UNSIGNED_BYTE, self->data );
     }
 }
 
