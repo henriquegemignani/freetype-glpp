@@ -86,6 +86,16 @@ TextureFont::TextureFont(TextureAtlas* atlas,
                                        filename.c_str())),
       atlas_(atlas) {}
 
+TextureFont::TextureFont(TextureAtlas* atlas,
+                         const void *memory_base,
+                         size_t memory_size,
+                         const float size )
+    : self_(texture_font_new_from_memory(static_cast<texture_atlas_t*>(atlas->RawGet()),
+                                         size,
+                                         memory_base,
+                                         memory_size)),
+      atlas_(atlas) {}
+
 TextureFont::~TextureFont() {
     for(std::map<void*, TextureGlyph*>::iterator it = glyphs_.begin(); it != glyphs_.end(); ++it)
         delete it->second;
