@@ -34,6 +34,8 @@
 #ifndef __VECTOR_H__
 #define __VECTOR_H__
 
+#include <stdlib.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -76,7 +78,7 @@ extern "C" {
  *
  * @memberof vector
  */
-typedef struct
+typedef struct vector_t
  {
      /** Pointer to dynamically allocated items. */
      void * items;

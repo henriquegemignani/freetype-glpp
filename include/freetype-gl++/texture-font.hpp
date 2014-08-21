@@ -30,10 +30,10 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of Henrique Gemignani.
  * ============================================================================
- * 
+ *
  *  This library is merely a wrapper of the Freetype GL by Nicolas P. Rougier.
  *  WWW: http://code.google.com/p/freetype-gl/
- * 
+ *
  * ============================================================================
  */
 #ifndef FREETYPEGLXX_TEXTUREFONT_HPP_
@@ -72,26 +72,26 @@ namespace freetypeglxx {
  *                       xmin                     xmax
  *                        |                         |
  *                        |<-------- width -------->|
- *                        |                         |    
+ *                        |                         |
  *              |         +-------------------------+----------------- ymax
  *              |         |    ggggggggg   ggggg    |     ^        ^
- *              |         |   g:::::::::ggg::::g    |     |        | 
- *              |         |  g:::::::::::::::::g    |     |        | 
- *              |         | g::::::ggggg::::::gg    |     |        | 
- *              |         | g:::::g     g:::::g     |     |        | 
- *    offset_x -|-------->| g:::::g     g:::::g     |  offset_y    | 
- *              |         | g:::::g     g:::::g     |     |        | 
- *              |         | g::::::g    g:::::g     |     |        | 
- *              |         | g:::::::ggggg:::::g     |     |        |  
+ *              |         |   g:::::::::ggg::::g    |     |        |
+ *              |         |  g:::::::::::::::::g    |     |        |
+ *              |         | g::::::ggggg::::::gg    |     |        |
+ *              |         | g:::::g     g:::::g     |     |        |
+ *    offset_x -|-------->| g:::::g     g:::::g     |  offset_y    |
+ *              |         | g:::::g     g:::::g     |     |        |
+ *              |         | g::::::g    g:::::g     |     |        |
+ *              |         | g:::::::ggggg:::::g     |     |        |
  *              |         |  g::::::::::::::::g     |     |      height
- *              |         |   gg::::::::::::::g     |     |        | 
+ *              |         |   gg::::::::::::::g     |     |        |
  *  baseline ---*---------|---- gggggggg::::::g-----*--------      |
- *            / |         |             g:::::g     |              | 
- *     origin   |         | gggggg      g:::::g     |              | 
- *              |         | g:::::gg   gg:::::g     |              | 
- *              |         |  g::::::ggg:::::::g     |              | 
- *              |         |   gg:::::::::::::g      |              | 
- *              |         |     ggg::::::ggg        |              | 
+ *            / |         |             g:::::g     |              |
+ *     origin   |         | gggggg      g:::::g     |              |
+ *              |         | g:::::gg   gg:::::g     |              |
+ *              |         |  g::::::ggg:::::::g     |              |
+ *              |         |   gg:::::::::::::g      |              |
+ *              |         |     ggg::::::ggg        |              |
  *              |         |         gggggg          |              v
  *              |         +-------------------------+----------------- ymin
  *              |                                   |
@@ -104,11 +104,11 @@ class TextureGlyph {
      * Get the kerning between two horizontal glyphs.
      *
      * @param charcode  codepoint of the peceding glyph
-     * 
+     *
      * @return x kerning value
      */
     float GetKerning(const wchar_t charcode);
-    
+
     /// Glyph's width in pixels.
     size_t width() const;
 
@@ -157,9 +157,9 @@ class TextureGlyph {
 
   private:
     TextureGlyph(void* data);
-  
+
     void* self_;
-    
+
     friend class TextureFont;
 };
 
@@ -185,6 +185,22 @@ class TextureFont {
                 const float size );
 
     /**
+     * As above, but creates a new texture font from a buffer in memory.
+     *
+     * @param atlas        A texture atlas
+     * @param memory_base  Start of the font file in memory
+     * @param memory_size  Size of the font file memory region, in bytes
+     * @param size         Size of font to be created (in points)
+     *
+     * @return A new empty font (no glyph inside yet)
+     *
+     */
+    TextureFont(TextureAtlas* atlas,
+                const void *memory_base,
+                size_t memory_size,
+                const float size );
+
+    /**
      * Delete a texture font. Note that this does not delete the glyph from the
      * texture atlas.
      *
@@ -193,7 +209,7 @@ class TextureFont {
 
     /**
      * Request a new glyph from the font. If it has not been created yet, it will
-     * be. 
+     * be.
      *
      * @param charcode Character codepoint to be loaded.
      *
@@ -214,7 +230,7 @@ class TextureFont {
      *         every glyphs.
      */
     size_t LoadGlyphs(const wchar_t * charcodes);
-    
+
     /// Getters
     /**
      * This field is simply used to compute a default line spacing (i.e., the
@@ -224,10 +240,10 @@ class TextureFont {
      * extend above or below subsequent baselines when using this distance.
      */
     float height() const;
-    
+
     //TODO
     TextureAtlas* atlas() const;
-    
+
   private:
     void* self_;
     std::map<void*, TextureGlyph*> glyphs_;
