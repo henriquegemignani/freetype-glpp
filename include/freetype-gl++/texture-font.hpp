@@ -158,6 +158,14 @@ class TextureGlyph {
     /// Outline thickness
     float outline_thickness() const;
 
+    /**
+     *  Returns the implementation pointer.
+     *  For internal library use (or advanced uses).
+     *
+     * @return A texture_glyph_t pointer as a void*. You must cast it yourself.
+     */
+    void* RawGet() { return self_; }
+
   private:
     TextureGlyph(void* data);
 
@@ -306,6 +314,14 @@ class TextureFont {
 
     /// Atlas structure to store glyphs data.
     TextureAtlas* atlas() const;
+
+    /**
+     *  Returns the implementation pointer.
+     *  For internal library use (or advanced uses).
+     *
+     * @return A texture_font_t pointer as a void*. You must cast it yourself.
+     */
+    void* RawGet() { return self_; }
 
   private:
     void* self_;
