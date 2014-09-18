@@ -103,7 +103,7 @@ class TextureGlyph {
     /**
      * Get the kerning between two horizontal glyphs.
      *
-     * @param charcode  codepoint of the peceding glyph
+     * @param charcode codepoint of the preceding glyph
      *
      * @return x kerning value
      */
