@@ -46,31 +46,33 @@
 namespace freetypeglxx {
 
 float TextureGlyph::GetKerning(const wchar_t charcode) {
-    return texture_glyph_get_kerning(static_cast<const texture_glyph_t *>(self_),
+    return texture_glyph_get_kerning(static_cast<const texture_glyph_t*>(self_),
                                      charcode);
 }
 
-size_t TextureGlyph::width() const { return static_cast<const texture_glyph_t *>(self_)->width; }
+size_t TextureGlyph::width() const { return static_cast<const texture_glyph_t*>(self_)->width; }
 
-size_t TextureGlyph::height() const { return static_cast<const texture_glyph_t *>(self_)->height; }
+size_t TextureGlyph::height() const { return static_cast<const texture_glyph_t*>(self_)->height; }
 
-int TextureGlyph::offset_x() const { return static_cast<const texture_glyph_t *>(self_)->offset_x; }
+int TextureGlyph::offset_x() const { return static_cast<const texture_glyph_t*>(self_)->offset_x; }
 
-int TextureGlyph::offset_y() const { return static_cast<const texture_glyph_t *>(self_)->offset_y; }
+int TextureGlyph::offset_y() const { return static_cast<const texture_glyph_t*>(self_)->offset_y; }
 
-float TextureGlyph::advance_x() const { return static_cast<const texture_glyph_t *>(self_)->advance_x; }
+float TextureGlyph::advance_x() const { return static_cast<const texture_glyph_t*>(self_)->advance_x; }
 
-float TextureGlyph::advance_y() const { return static_cast<const texture_glyph_t *>(self_)->advance_y; }
+float TextureGlyph::advance_y() const { return static_cast<const texture_glyph_t*>(self_)->advance_y; }
 
-float TextureGlyph::s0() const { return static_cast<const texture_glyph_t *>(self_)->s0; }
+float TextureGlyph::s0() const { return static_cast<const texture_glyph_t*>(self_)->s0; }
 
-float TextureGlyph::t0() const { return static_cast<const texture_glyph_t *>(self_)->t0; }
+float TextureGlyph::t0() const { return static_cast<const texture_glyph_t*>(self_)->t0; }
 
-float TextureGlyph::s1() const { return static_cast<const texture_glyph_t *>(self_)->s1; }
+float TextureGlyph::s1() const { return static_cast<const texture_glyph_t*>(self_)->s1; }
 
-float TextureGlyph::t1() const { return static_cast<const texture_glyph_t *>(self_)->t1; }
+float TextureGlyph::t1() const { return static_cast<const texture_glyph_t*>(self_)->t1; }
 
-int TextureGlyph::outline_type() const { return static_cast<const texture_glyph_t *>(self_)->outline_type; }
+int TextureGlyph::outline_type() const { return static_cast<const texture_glyph_t*>(self_)->outline_type; }
+
+float TextureGlyph::outline_thickness() const { return static_cast<const texture_glyph_t*>(self_)->outline_thickness; }
 
 TextureGlyph::TextureGlyph(void* data) : self_(data) {
     assert(self_);
@@ -87,7 +89,7 @@ TextureFont::TextureFont(TextureAtlas* atlas,
       atlas_(atlas) {}
 
 TextureFont::TextureFont(TextureAtlas* atlas,
-                         const void *memory_base,
+                         const void* memory_base,
                          size_t memory_size,
                          const float size )
     : self_(texture_font_new_from_memory(static_cast<texture_atlas_t*>(atlas->RawGet()),
@@ -111,12 +113,36 @@ TextureGlyph* TextureFont::GetGlyph(wchar_t charcode) {
     return glyphp;
 }
 
-size_t TextureFont::LoadGlyphs(const wchar_t * charcodes) {
+size_t TextureFont::LoadGlyphs(const wchar_t* charcodes) {
     return texture_font_load_glyphs(static_cast<texture_font_t*>(self_),
                                     charcodes);
 }
 
-float TextureFont::height() const { return static_cast<texture_font_t*>(self_)->height; }
+float TextureFont::size() const { return static_cast<const texture_font_t*>(self_)->size; }
+
+int TextureFont::hinting() const { return static_cast<const texture_font_t*>(self_)->hinting; }
+
+int TextureFont::outline_type() const { return static_cast<const texture_font_t*>(self_)->outline_type; }
+
+float TextureFont::outline_thickness() const { return static_cast<const texture_font_t*>(self_)->outline_thickness; }
+
+int TextureFont::filtering() const { return static_cast<const texture_font_t*>(self_)->filtering; }
+
+int TextureFont::kerning() const { return static_cast<const texture_font_t*>(self_)->kerning; }
+
+unsigned char const (&TextureFont::lcd_weights() const)[5] { return static_cast<const texture_font_t*>(self_)->lcd_weights; }
+
+float TextureFont::height() const { return static_cast<const texture_font_t*>(self_)->height; }
+
+float TextureFont::linegap() const { return static_cast<const texture_font_t*>(self_)->linegap; }
+
+float TextureFont::ascender() const { return static_cast<const texture_font_t*>(self_)->ascender; }
+
+float TextureFont::descender() const { return static_cast<const texture_font_t*>(self_)->descender; }
+
+float TextureFont::underline_position() const { return static_cast<const texture_font_t*>(self_)->underline_position; }
+
+float TextureFont::underline_thickness() const { return static_cast<const texture_font_t*>(self_)->underline_thickness; }
 
 TextureAtlas* TextureFont::atlas() const {
     assert(atlas_->RawGet() == static_cast<texture_font_t*>(self_)->atlas);
