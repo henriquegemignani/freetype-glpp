@@ -72,6 +72,8 @@ float TextureGlyph::t1() const { return static_cast<const texture_glyph_t *>(sel
 
 int TextureGlyph::outline_type() const { return static_cast<const texture_glyph_t *>(self_)->outline_type; }
 
+float TextureGlyph::outline_thickness() const { return static_cast<const texture_glyph_t*>(self_)->outline_thickness; }
+
 TextureGlyph::TextureGlyph(void* data) : self_(data) {
     assert(self_);
 }
@@ -116,7 +118,31 @@ size_t TextureFont::LoadGlyphs(const wchar_t * charcodes) {
                                     charcodes);
 }
 
-float TextureFont::height() const { return static_cast<texture_font_t*>(self_)->height; }
+float TextureFont::size() const { return static_cast<const texture_font_t*>(self_)->size; }
+
+int TextureFont::hinting() const { return static_cast<const texture_font_t*>(self_)->hinting; }
+
+int TextureFont::outline_type() const { return static_cast<const texture_font_t*>(self_)->outline_type; }
+
+float TextureFont::outline_thickness() const { return static_cast<const texture_font_t*>(self_)->outline_thickness; }
+
+int TextureFont::filtering() const { return static_cast<const texture_font_t*>(self_)->filtering; }
+
+int TextureFont::kerning() const { return static_cast<const texture_font_t*>(self_)->kerning; }
+
+unsigned char const (&TextureFont::lcd_weights() const)[5] { return static_cast<const texture_font_t*>(self_)->lcd_weights; }
+
+float TextureFont::height() const { return static_cast<const texture_font_t*>(self_)->height; }
+
+float TextureFont::linegap() const { return static_cast<const texture_font_t*>(self_)->linegap; }
+
+float TextureFont::ascender() const { return static_cast<const texture_font_t*>(self_)->ascender; }
+
+float TextureFont::descender() const { return static_cast<const texture_font_t*>(self_)->descender; }
+
+float TextureFont::underline_position() const { return static_cast<const texture_font_t*>(self_)->underline_position; }
+
+float TextureFont::underline_thickness() const { return static_cast<const texture_font_t*>(self_)->underline_thickness; }
 
 TextureAtlas* TextureFont::atlas() const {
     assert(atlas_->RawGet() == static_cast<texture_font_t*>(self_)->atlas);
