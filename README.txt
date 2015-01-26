@@ -8,7 +8,7 @@ Freetype GL++ - A C++ Wrapper for Freetype GL
   COMPILING
 ==============================
  Pre-requisites:
-  - CMake 2.8.5 (or later)
+  - CMake 2.8.11 (or later)
   - C++ compiler (tested against GCC 4.4 and MSVC10/11)
   - Freetype GL, which in turn depends on:
     - OpenGL
