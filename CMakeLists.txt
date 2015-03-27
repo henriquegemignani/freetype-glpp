@@ -3,8 +3,9 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.8.11 )
 project(freetype-gl++ CXX C)
 
 SET( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules" ${CMAKE_MODULE_PATH} )
+SET(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 
-option(FREETYPE-GLXX_BUILD_DEMOS       "Build the library demos." OFF)
+option(FREETYPE-GLXX_BUILD_DEMOS "Build the library demos." ON)
 
 add_subdirectory(externals)
 
