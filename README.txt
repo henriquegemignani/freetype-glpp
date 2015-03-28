@@ -2,7 +2,7 @@ Freetype GL++ - A C++ Wrapper for Freetype GL
 =============================================
 
  This library is merely a wrapper of the Freetype GL by Nicolas P. Rougier.
- WWW: http://code.google.com/p/freetype-gl/
+ WWW: https://github.com/rougier/freetype-gl
 
 ============================== 
   COMPILING
