@@ -38,7 +38,7 @@
 
 #include <cstdio>
 #include <cwchar>
-
+#include <cstring>
 #include "mat4.h"
 #include <freetype-gl++/freetype-gl++.hpp>
 #include <freetype-gl++/shader.hpp>
@@ -179,8 +179,8 @@ int main( int argc, char **argv )
     const char * filename = "fonts/Vera.ttf";
     const wchar_t *text = L"A Quick Brown Fox Jumps Over The Lazy Dog 0123456789";
     buffer = new VertexBuffer( "vertex:3f,tex_coord:2f,color:4f" );
-    vec2 pen = {{5,400}};
-    vec4 black = {{0,0,0,1}};
+    vec2 pen = {5,400};
+    vec4 black = {0,0,0,1};
     for(size_t i = 7; i < 27; ++i) {
         TextureFont *font = new TextureFont( atlas, filename, i );
         pen.x = 5;
