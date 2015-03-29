@@ -1,9 +1,12 @@
 language: cpp
 
 install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo add-apt-repository -y ppa:henriquegemignani/uspgamedev
   - sudo apt-get update
   - sudo apt-get install cmake
+  - sudo apt-get install --force-yes g++-4.7
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.7" CC="gcc-4.7"; fi
 
 compiler:
   - gcc
